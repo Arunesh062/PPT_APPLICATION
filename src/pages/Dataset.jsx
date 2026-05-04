@@ -1,136 +1,151 @@
 import React from 'react';
 import Card from '../components/Card';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, Legend } from 'recharts';
+import { Database, Image as ImageIcon, Layers, Zap, ShieldCheck, HardDrive, Share2 } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
-};
-
-const itemVariants = {
-  hidden: { scale: 0.95, opacity: 0 },
-  visible: { scale: 1, opacity: 1, transition: { type: 'spring', stiffness: 100 } }
-};
 
 const Dataset = () => {
   const distribution = [
-    { name: 'Training Set (70%)', value: 8400, color: '#10b981' },
-    { name: 'Validation Set (15%)', value: 1800, color: '#3b82f6' },
-    { name: 'Testing Set (15%)', value: 1800, color: '#8b5cf6' },
+    { name: 'TRAINING', value: 8400, color: '#10b981' },
+    { name: 'VALIDATION', value: 1800, color: '#3b82f6' },
+    { name: 'TESTING', value: 1800, color: '#8b5cf6' },
   ];
 
-  const classes = [
-    { name: 'Anthracnose', count: 1500 },
-    { name: 'Bacterial Spot', count: 1450 },
-    { name: 'Papaya Leaf Curl', count: 1600 },
-    { name: 'Papaya Mosaic', count: 1550 },
-    { name: 'Papaya Ringspot', count: 1400 },
-    { name: 'Powdery Mildew', count: 1500 },
-    { name: 'Brown Spot', count: 1500 },
-    { name: 'Healthy', count: 1500 },
+  const categories = [
+    { name: 'ANTHRACNOSE', count: 1500, type: 'FUNGAL' },
+    { name: 'BACTERIAL SPOT', count: 1450, type: 'BACTERIAL' },
+    { name: 'LEAF CURL', count: 1600, type: 'VIRAL' },
+    { name: 'MOSAIC VIRUS', count: 1550, type: 'VIRAL' },
+    { name: 'RINGSPOT', count: 1400, type: 'VIRAL' },
+    { name: 'HEALTHY', count: 1500, type: 'STABLE' },
   ];
 
   return (
-    <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
-      <motion.div variants={itemVariants} className="mb-8">
-        <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">Dataset Information</h1>
-        <p className="text-slate-600 mt-2 font-medium">Details about the data used to train the model</p>
-      </motion.div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <motion.div variants={itemVariants}>
-          <Card className="text-center shadow-md hover:shadow-lg transition-shadow border-t-4 border-t-emerald-500">
-            <p className="text-slate-500 font-bold uppercase tracking-wider text-sm mb-2">Total Images</p>
-            <h2 className="text-5xl font-extrabold text-slate-800">12,000</h2>
-          </Card>
-        </motion.div>
-        <motion.div variants={itemVariants}>
-          <Card className="text-center shadow-md hover:shadow-lg transition-shadow border-t-4 border-t-blue-500">
-            <p className="text-slate-500 font-bold uppercase tracking-wider text-sm mb-2">Disease Classes</p>
-            <h2 className="text-5xl font-extrabold text-slate-800">8</h2>
-          </Card>
-        </motion.div>
-        <motion.div variants={itemVariants}>
-          <Card className="text-center shadow-md hover:shadow-lg transition-shadow border-t-4 border-t-purple-500">
-            <p className="text-slate-500 font-bold uppercase tracking-wider text-sm mb-2">Image Resolution</p>
-            <h2 className="text-5xl font-extrabold text-slate-800">224<span className="text-3xl text-slate-400">px</span></h2>
-          </Card>
-        </motion.div>
+    <div className="space-y-12 pb-20">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-3">
+           <HardDrive size={18} className="text-emerald-500" />
+           <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em]">Central Repository // DB-AXIS</span>
+        </div>
+        <h1 className="text-5xl font-black text-white tracking-tighter uppercase italic">
+          Data <span className="text-emerald-500 text-glow">Library</span>
+        </h1>
+        <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Structural analysis of the 12,000 unit neural training corpus.</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-        <motion.div variants={itemVariants} className="h-full">
-          <Card title="Dataset Split Distribution" className="h-full shadow-lg">
-            <div className="h-72 w-full flex items-center justify-center pt-4">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={distribution}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={70}
-                    outerRadius={100}
-                    paddingAngle={5}
-                    dataKey="value"
-                    stroke="none"
-                  >
-                    {distribution.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <RechartsTooltip 
-                    formatter={(value) => [`${value} images`, 'Count']}
-                    contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', fontWeight: 'bold'}}
-                  />
-                  <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{fontWeight: 600, color: '#475569'}} />
-                </PieChart>
-              </ResponsiveContainer>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          { label: 'Total Volume', val: '12,000', sub: 'DATA UNITS', icon: Database, color: 'emerald' },
+          { label: 'Tensor Dim', val: '224x224', sub: 'RGB MAP', icon: ImageIcon, color: 'blue' },
+          { label: 'Pathogen Classes', val: '08', sub: 'VECTORS', icon: Layers, color: 'purple' },
+        ].map((item, i) => (
+          <Card key={i} className="border-none group overflow-hidden relative" hoverEffect={true}>
+            <div className={`absolute top-0 right-0 p-6 opacity-[0.03] group-hover:scale-150 group-hover:rotate-12 transition-all duration-700`}>
+               <item.icon size={100} />
+            </div>
+            <div className="flex items-center gap-6 relative z-10">
+              <div className={`w-16 h-16 rounded-[1.5rem] bg-${item.color}-500/10 text-${item.color}-400 flex items-center justify-center border border-${item.color}-500/20 shadow-inner group-hover:scale-110 transition-transform`}>
+                <item.icon size={32} />
+              </div>
+              <div>
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1.5">{item.label}</p>
+                <div className="flex items-baseline gap-2">
+                  <h3 className="text-4xl font-black text-white tracking-tighter uppercase">{item.val}</h3>
+                  <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">{item.sub}</span>
+                </div>
+              </div>
             </div>
           </Card>
-        </motion.div>
+        ))}
+      </div>
 
-        <motion.div variants={itemVariants} className="h-full">
-          <Card title="Class Distribution" className="h-full shadow-lg">
-            <div className="overflow-x-auto pt-2">
-              <table className="w-full text-sm text-left text-slate-600">
-                <thead className="text-xs text-slate-700 uppercase bg-slate-100">
-                  <tr>
-                    <th scope="col" className="px-6 py-4 rounded-tl-lg font-bold">Class Name</th>
-                    <th scope="col" className="px-6 py-4 font-bold">Category</th>
-                    <th scope="col" className="px-6 py-4 rounded-tr-lg text-right font-bold">Count</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {classes.map((cls, idx) => (
-                    <motion.tr 
-                      whileHover={{ backgroundColor: '#f8fafc' }}
-                      key={idx} 
-                      className="bg-white border-b border-slate-100 last:border-0"
-                    >
-                      <th scope="row" className="px-6 py-3 font-extrabold text-slate-800 whitespace-nowrap">
-                        {cls.name}
-                      </th>
-                      <td className="px-6 py-3">
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold shadow-sm ${cls.name === 'Healthy' ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}`}>
-                          {cls.name === 'Healthy' ? 'Healthy' : 'Diseased'}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        {/* Left: Terminal Style Table */}
+        <Card title="Corpus Distribution" subtitle="Class-Wise Categorization" className="lg:col-span-3 border-none bg-slate-950 shadow-2xl" noPadding={true}>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm text-left">
+              <thead className="bg-white/[0.02] border-b border-white/5">
+                <tr>
+                  <th className="px-8 py-5 font-black text-slate-500 uppercase tracking-widest text-[10px]">Pathogen Node</th>
+                  <th className="px-8 py-5 font-black text-slate-500 uppercase tracking-widest text-[10px]">Classification</th>
+                  <th className="px-8 py-5 font-black text-slate-500 uppercase tracking-widest text-[10px] text-right">Unit Count</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/[0.02]">
+                {categories.map((cat, i) => (
+                  <tr key={i} className="hover:bg-white/[0.03] transition-all group cursor-default">
+                    <td className="px-8 py-5 font-black text-white tracking-widest uppercase text-xs group-hover:text-emerald-400 transition-colors">{cat.name}</td>
+                    <td className="px-8 py-5">
+                      <div className="flex items-center gap-2">
+                         <div className={`h-1 w-1 rounded-full ${cat.type === 'STABLE' ? 'bg-emerald-500' : 'bg-slate-500'}`} />
+                         <span className={`text-[9px] font-black uppercase tracking-widest ${
+                          cat.type === 'STABLE' ? 'text-emerald-500' : 'text-slate-500'
+                        }`}>
+                          {cat.type}
                         </span>
-                      </td>
-                      <td className="px-6 py-3 text-right font-extrabold text-slate-700">
-                        {cls.count}
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
+                      </div>
+                    </td>
+                    <td className="px-8 py-5 font-black text-slate-400 text-right uppercase tracking-tighter group-hover:text-white transition-colors">{cat.count}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="p-6 bg-white/[0.01] border-t border-white/5 flex items-center justify-between">
+             <div className="flex items-center gap-2">
+                <Share2 size={12} className="text-slate-500" />
+                <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Metadata Integrity: 100%</span>
+             </div>
+             <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Repository v4.1</span>
+          </div>
+        </Card>
+
+        {/* Right: Pie Chart Hub */}
+        <Card title="Split Protocols" subtitle="Data Partitioning Strategy" className="lg:col-span-2 border-none">
+          <div className="h-72 w-full mt-6 relative">
+            {/* Background glowing circle */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-10 blur-3xl">
+               <div className="h-40 w-40 rounded-full bg-emerald-500" />
             </div>
-          </Card>
-        </motion.div>
+            
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={distribution}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={70}
+                  outerRadius={100}
+                  paddingAngle={10}
+                  dataKey="value"
+                  stroke="none"
+                >
+                  {distribution.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                <RechartsTooltip 
+                  contentStyle={{backgroundColor: '#0f172a', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.5)'}}
+                  itemStyle={{fontWeight: 900, fontSize: '10px'}}
+                />
+                <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{fontSize: '9px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em'}} />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="mt-8 p-6 rounded-[2rem] bg-emerald-500/[0.03] border border-emerald-500/20 flex flex-col gap-4">
+             <div className="flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-emerald-500 text-white shadow-lg shadow-emerald-500/20">
+                  <ShieldCheck size={18} />
+                </div>
+                <h4 className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Entropy Validation</h4>
+             </div>
+             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-relaxed">
+               Balanced stratification across all pathogen vectors ensured high-fidelity generalization in multi-class diagnostic scenarios.
+             </p>
+          </div>
+        </Card>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

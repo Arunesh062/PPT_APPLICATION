@@ -1,103 +1,105 @@
 import React from 'react';
 import Card from '../components/Card';
-import { AlertCircle, Sprout, ShieldAlert } from 'lucide-react';
+import { Sprout, ShieldAlert, AlertTriangle, ChevronRight, Globe, Zap, Leaf, Info } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 90 } }
-};
-
 const Introduction = () => {
-  const diseases = [
-    { name: 'Anthracnose', desc: 'Fungal disease causing sunken, water-soaked spots on fruits and leaves.' },
-    { name: 'Bacterial Spot', desc: 'Causes angular, water-soaked spots that turn brown or black.' },
-    { name: 'Papaya Leaf Curl', desc: 'Viral infection causing severe curling, crinkling, and distortion of leaves.' },
-    { name: 'Papaya Mosaic', desc: 'Characterized by mottling, yellowing, and mosaic patterns on leaves.' },
-    { name: 'Papaya Ringspot', desc: 'Devastating viral disease causing prominent ring-like spots and mottling.' }
-  ];
-
   return (
-    <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
-      <motion.div variants={itemVariants} className="mb-8">
-        <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">Introduction</h1>
-        <p className="text-slate-600 mt-2 font-medium">The context and importance of the problem</p>
-      </motion.div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <motion.div variants={itemVariants} className="h-full">
-          <Card title="Importance of Papaya Crop" className="h-full shadow-lg">
-            <div className="flex items-start gap-4 mb-8 pt-4">
-              <div className="p-4 bg-emerald-100 text-emerald-700 rounded-2xl shadow-sm">
-                <Sprout size={32} />
-              </div>
-              <div>
-                <h3 className="text-xl font-extrabold text-slate-800">Global Significance</h3>
-                <p className="text-slate-700 font-medium mt-2 leading-relaxed">
-                  Papaya (Carica papaya) is a vital commercial crop cultivated widely in tropical and subtropical regions. It is highly valued for its nutritional content, medicinal properties, and high economic return for farmers.
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-4">
-              <div className="p-4 bg-red-100 text-red-700 rounded-2xl shadow-sm">
-                <ShieldAlert size={32} />
-              </div>
-              <div>
-                <h3 className="text-xl font-extrabold text-slate-800">The Threat</h3>
-                <p className="text-slate-700 font-medium mt-2 leading-relaxed">
-                  Papaya crops are highly susceptible to various pathogens including fungi, bacteria, and viruses. Early identification is crucial to prevent massive crop failure and economic losses. Manual inspection is slow, prone to error, and requires expert knowledge that many farmers lack.
-                </p>
-              </div>
-            </div>
-          </Card>
-        </motion.div>
-
-        <motion.div variants={itemVariants} className="h-full">
-          <Card title="Common Papaya Diseases" className="h-full bg-slate-100 border-none shadow-inner">
-            <div className="space-y-4 pt-2">
-              {diseases.map((disease, idx) => (
-                <motion.div 
-                  whileHover={{ scale: 1.03 }}
-                  key={idx} 
-                  className="bg-white p-5 rounded-2xl shadow-md border border-slate-200 flex gap-4 items-start"
-                >
-                  <div className="bg-amber-50 p-2 rounded-full">
-                    <AlertCircle className="text-amber-500 shrink-0" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-extrabold text-slate-800 text-lg">{disease.name}</h4>
-                    <p className="text-sm text-slate-600 mt-1 font-medium">{disease.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </Card>
-        </motion.div>
+    <div className="space-y-12 pb-20">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-3">
+           <Info size={18} className="text-emerald-500" />
+           <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em]">Operational Context // Global Tier</span>
+        </div>
+        <h1 className="text-5xl font-black text-white tracking-tighter uppercase italic">
+          Project <span className="text-emerald-500 text-glow">Origins</span>
+        </h1>
+        <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Defining the ecological and economic parameters of the diagnostic mission.</p>
       </div>
 
-      <motion.div variants={itemVariants}>
-        <Card className="bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-900 text-white border-none mt-6 shadow-2xl overflow-hidden relative">
-          <div className="absolute top-0 right-0 -mt-10 -mr-10 opacity-10">
-            <Sprout size={200} />
-          </div>
-          <div className="relative z-10 p-4 sm:p-6">
-            <h3 className="text-2xl font-extrabold mb-4 text-emerald-400">The Need for AI</h3>
-            <p className="text-slate-200 leading-relaxed font-medium text-lg">
-              Traditional diagnostic methods rely heavily on agricultural experts, which is time-consuming and often inaccessible to local farmers. By deploying Deep Learning and Generative AI, we can provide immediate, expert-level diagnostics and actionable treatment plans directly to a farmer's smartphone, bridging the gap between advanced agricultural science and grassroots farming.
-            </p>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        {/* Main Context Card */}
+        <Card 
+          className="lg:col-span-2 border-none p-2 bg-transparent"
+          hoverEffect={false}
+          glass={false}
+        >
+          <div className="glass-card rounded-[3rem] p-10 lg:p-14 border border-white/10 relative overflow-hidden group">
+            {/* Background Accent */}
+            <div className="absolute -top-20 -right-20 w-80 h-80 bg-emerald-500/5 blur-[100px] pointer-events-none group-hover:scale-125 transition-transform duration-1000" />
+            
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500 flex items-center justify-center text-white shadow-2xl shadow-emerald-500/20 border border-emerald-400/30">
+                <Sprout size={28} />
+              </div>
+              <h3 className="text-2xl font-black text-white tracking-tighter uppercase italic">The Economic Backbone</h3>
+            </div>
+            
+            <div className="space-y-8 relative z-10">
+              <p className="text-2xl text-slate-300 leading-relaxed font-black tracking-tight uppercase">
+                Papaya (Carica papaya) represents more than a nutritional asset; it is a <span className="text-white border-b-2 border-emerald-500/30">multi-billion dollar pillar</span> of tropical agriculture.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
+                <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 shadow-inner group/item hover:bg-white/[0.04] transition-all">
+                  <Globe className="text-blue-500 mb-4 group-hover/item:scale-110 transition-transform" size={24} />
+                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Market Impact</p>
+                  <p className="text-sm font-black text-white tracking-widest uppercase">Global Export Dominance</p>
+                </div>
+                <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 shadow-inner group/item hover:bg-white/[0.04] transition-all">
+                  <Zap className="text-amber-500 mb-4 group-hover/item:scale-110 transition-transform" size={24} />
+                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Industrial Yield</p>
+                  <p className="text-sm font-black text-white tracking-widest uppercase">Papain Extraction Catalyst</p>
+                </div>
+              </div>
+            </div>
           </div>
         </Card>
-      </motion.div>
-    </motion.div>
+
+        {/* Tactical Threat Analysis */}
+        <div className="space-y-8">
+          <Card 
+            title="Operational Threats" 
+            subtitle="Pathogen Vulnerability Vector"
+            icon={ShieldAlert}
+            className="border-none bg-red-500/[0.02] border-red-500/20"
+          >
+            <div className="space-y-6 mt-2">
+              <p className="text-xs text-slate-400 font-bold leading-relaxed uppercase tracking-widest">
+                Papaya cultivation is plagued by viral and fungal strains that spread with near-total lethality, threatening entire regional yields within weeks.
+              </p>
+              
+              <div className="space-y-3">
+                {[
+                  'Inconsistent Field Diagnosis',
+                  'Expert Scarcity in Rural Hubs',
+                  'High Reaction Latency'
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/5 group hover:border-red-500/30 transition-all">
+                    <AlertTriangle size={16} className="text-red-500 animate-pulse" />
+                    <span className="text-[10px] font-black text-red-200/50 uppercase tracking-widest group-hover:text-red-400 transition-colors">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
+
+          <Card className="border-none bg-slate-950 text-white group overflow-hidden relative" hoverEffect={true}>
+             <div className="absolute -top-10 -right-10 p-6 opacity-[0.03] group-hover:scale-150 transition-transform duration-1000 rotate-12">
+               <Leaf size={160} strokeWidth={1} />
+             </div>
+             <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] mb-4 relative z-10">Project Imperative</p>
+             <h4 className="text-xl font-black leading-snug tracking-tight uppercase italic relative z-10">
+               "We provide the neural eyes to secure the global harvest."
+             </h4>
+             <div className="mt-6 flex items-center gap-2 relative z-10">
+                <div className="h-[2px] w-8 bg-emerald-500" />
+                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Diagnostic Node 01 Initialized</span>
+             </div>
+          </Card>
+        </div>
+      </div>
+    </div>
   );
 };
 

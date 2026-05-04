@@ -1,78 +1,109 @@
 import React from 'react';
 import Card from '../components/Card';
-import { FileText, Cpu, MessageSquare } from 'lucide-react';
+import { FileText, Cpu, MessageSquare, Sparkles, Quote, Terminal, Fingerprint } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 30, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 80 } }
-};
 
 const Abstract = () => {
   return (
-    <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
-      <motion.div variants={itemVariants} className="mb-8">
-        <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">Abstract</h1>
-        <p className="text-slate-600 mt-2 font-medium">Summary of the research project</p>
-      </motion.div>
-
-      <motion.div variants={itemVariants}>
-        <Card className="relative overflow-hidden shadow-xl border-0 ring-1 ring-slate-200">
-          <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-emerald-400 to-emerald-600"></div>
-          <div className="p-4 sm:p-8 prose prose-slate max-w-none text-lg text-slate-700 leading-relaxed font-medium">
-            <p className="mb-6">
-              Agriculture plays a crucial role in the global economy, and papaya is a highly cultivated fruit known for its nutritional and economic value. However, papaya cultivation is severely threatened by various foliar diseases, leading to significant yield losses if not identified and treated promptly.
-            </p>
-            <p className="mb-6">
-              This project presents a novel <strong className="text-emerald-700 font-extrabold bg-emerald-50 px-2 py-1 rounded">Hybrid Framework</strong> combining the advanced image classification capabilities of <strong className="text-emerald-700 font-extrabold bg-emerald-50 px-2 py-1 rounded">ConvNeXt</strong> with the natural language reasoning of <strong className="text-emerald-700 font-extrabold bg-emerald-50 px-2 py-1 rounded">Large Language Models (LLMs)</strong> to address this challenge. 
-            </p>
-            <p>
-              By leveraging a comprehensive dataset of 12,000 images across 8 distinct disease classes, the ConvNeXt model achieves an outstanding classification <strong className="text-emerald-700 font-extrabold bg-emerald-50 px-2 py-1 rounded">accuracy of 96%</strong>. To ensure interpretability, Grad-CAM is integrated to visualize the decision-making process. Finally, an LLM module translates the diagnostic results into actionable, easy-to-understand treatment recommendations, creating an end-to-end solution for modern precision agriculture.
-            </p>
+    <div className="max-w-5xl mx-auto space-y-12 py-6 pb-20">
+      {/* ── Page Header ── */}
+      <div className="text-center space-y-6">
+        <motion.div 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="inline-flex items-center gap-3 px-5 py-2 rounded-2xl glass-card text-emerald-400 text-[10px] font-black uppercase tracking-[0.4em] border border-emerald-500/20 shadow-lg shadow-emerald-500/10"
+        >
+          <Fingerprint size={16} />
+          Project Dossier #812
+        </motion.div>
+        
+        <div className="relative">
+          <h1 className="text-6xl font-black text-white tracking-tighter sm:text-7xl uppercase">
+            The <span className="text-emerald-500 text-glow italic">Blueprint</span>
+          </h1>
+          <div className="absolute -top-10 -right-10 opacity-5 pointer-events-none">
+             <Terminal size={200} />
           </div>
-        </Card>
-      </motion.div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-        <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-          <Card className="text-center p-8 shadow-lg border-t-4 border-t-blue-500 bg-gradient-to-b from-white to-slate-50">
-            <div className="w-20 h-20 mx-auto bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-6 shadow-inner">
-              <Cpu size={40} />
-            </div>
-            <h3 className="text-xl font-extrabold text-slate-800 mb-3">Detection</h3>
-            <p className="text-slate-600 font-medium">State-of-the-art ConvNeXt architecture for accurate disease classification.</p>
-          </Card>
-        </motion.div>
-
-        <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-          <Card className="text-center p-8 shadow-lg border-t-4 border-t-purple-500 bg-gradient-to-b from-white to-slate-50">
-            <div className="w-20 h-20 mx-auto bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-6 shadow-inner">
-              <FileText size={40} />
-            </div>
-            <h3 className="text-xl font-extrabold text-slate-800 mb-3">Explainability</h3>
-            <p className="text-slate-600 font-medium">Grad-CAM integration highlights the exact diseased regions on the leaf.</p>
-          </Card>
-        </motion.div>
-
-        <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-          <Card className="text-center p-8 shadow-lg border-t-4 border-t-amber-500 bg-gradient-to-b from-white to-slate-50">
-            <div className="w-20 h-20 mx-auto bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mb-6 shadow-inner">
-              <MessageSquare size={40} />
-            </div>
-            <h3 className="text-xl font-extrabold text-slate-800 mb-3">Recommendation</h3>
-            <p className="text-slate-600 font-medium">LLM generates natural language treatment plans and preventive measures.</p>
-          </Card>
-        </motion.div>
+        </div>
+        
+        <p className="text-lg text-slate-400 font-bold max-w-2xl mx-auto uppercase tracking-wide leading-relaxed">
+          Hybrid Neural Framework for the Autonomous Diagnosis of Papaya Foliar Pathogens.
+        </p>
       </div>
-    </motion.div>
+
+      {/* ── Main Intel Card ── */}
+      <Card className="border-none shadow-[0_40px_100px_rgba(0,0,0,0.7)] p-2 relative overflow-hidden" hoverEffect={false}>
+        {/* Background Technical Decoration */}
+        <div className="absolute top-0 right-0 p-12 text-white/[0.03] pointer-events-none rotate-12">
+          <Quote size={240} strokeWidth={4} />
+        </div>
+        
+        <div className="absolute bottom-10 left-10 w-32 h-32 bg-emerald-500/10 blur-[60px] pointer-events-none" />
+
+        <div className="bg-white/[0.02] backdrop-blur-2xl rounded-3xl p-10 sm:p-16 relative z-10 border border-white/5">
+          <div className="space-y-8">
+            <div className="flex items-center gap-4 text-emerald-500 mb-4">
+               <div className="h-px w-12 bg-emerald-500/50" />
+               <span className="text-xs font-black uppercase tracking-[0.3em]">System Abstract</span>
+            </div>
+
+            <p className="text-2xl text-slate-200 leading-relaxed font-black tracking-tight uppercase sm:text-3xl">
+              Agriculture faces an <span className="text-white border-b-2 border-emerald-500/30">unprecedented ecological pivot</span>. 
+              The vulnerability of Papaya (Carica papaya) to rapid-spread pathogens demands a new paradigm of intervention.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12">
+               <div className="space-y-6">
+                  <p className="text-sm text-slate-400 leading-relaxed font-bold uppercase tracking-wider">
+                    Our architecture introduces a <strong className="text-white font-black">Hybrid Neural Interface</strong>. 
+                    By modernizing classical CNN designs with <strong className="text-emerald-400 font-black">ConvNeXt</strong>, 
+                    we've achieved a validation threshold of <strong className="text-white text-glow font-black text-2xl">96.0% accuracy</strong>.
+                  </p>
+               </div>
+               <div className="space-y-6">
+                  <p className="text-sm text-slate-400 leading-relaxed font-bold uppercase tracking-wider">
+                    Beyond identification, the framework utilizes <strong className="text-white font-black">Gen-AI Reasoning</strong> 
+                    to synthesize treatment protocols. This isn't just a classifier; it's a 
+                    <strong className="text-emerald-400 font-black"> Digital Agronomist</strong> providing real-time, 
+                    scientifically-validated treatment blueprints for global resilience.
+                  </p>
+               </div>
+            </div>
+
+            <div className="pt-10 flex flex-wrap gap-4">
+               {['#ConvNeXt', '#LLM-Reasoning', '#XAI', '#Smart-Farming'].map(tag => (
+                 <span key={tag} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-[9px] font-black text-slate-500 tracking-widest uppercase">{tag}</span>
+               ))}
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      {/* ── Metric Highlights ── */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { title: 'Vision Core', desc: 'ConvNeXt SOTA Backbone', icon: Cpu, color: 'blue' },
+          { title: 'XAI Module', desc: 'Grad-CAM Transparency', icon: FileText, color: 'purple' },
+          { title: 'Advice Engine', desc: 'LLM Treatment Blueprints', icon: MessageSquare, color: 'emerald' }
+        ].map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.1 }}
+            className="group flex items-center gap-6 p-6 rounded-[2rem] glass-card border-white/5 hover:border-emerald-500/30 hover:bg-white/[0.03] transition-all"
+          >
+            <div className={`w-14 h-14 rounded-2xl bg-${item.color}-500/10 text-${item.color}-400 flex items-center justify-center shrink-0 border border-${item.color}-500/20 group-hover:scale-110 transition-transform`}>
+              <item.icon size={28} />
+            </div>
+            <div>
+              <h4 className="font-black text-white text-xs uppercase tracking-widest group-hover:text-glow">{item.title}</h4>
+              <p className="text-[10px] text-slate-500 font-black uppercase tracking-wider mt-1">{item.desc}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
   );
 };
 

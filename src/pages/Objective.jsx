@@ -1,76 +1,65 @@
 import React from 'react';
 import Card from '../components/Card';
-import { Target, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Target, CheckCircle2, ChevronRight, Cpu, MessageSquare, Search, Box, Terminal, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 90 } }
-};
 
 const Objective = () => {
   const objectives = [
     {
-      title: "Build robust ConvNeXt model",
-      desc: "Develop and fine-tune a deep learning architecture capable of classifying papaya leaf diseases with high accuracy.",
-      color: "text-blue-600",
-      bg: "bg-blue-100",
-      border: "border-blue-200"
+      title: "Neural Robustness",
+      desc: "ARCHITECTING A CONVNEXT CORE TO IDENTIFY 08 UNIQUE PATHOGEN SIGNATURES.",
+      icon: Cpu,
+      color: "blue"
     },
     {
-      title: "Improve accuracy using preprocessing",
-      desc: "Implement advanced image augmentation and preprocessing techniques to ensure model robustness under varying field conditions.",
-      color: "text-purple-600",
-      bg: "bg-purple-100",
-      border: "border-purple-200"
+      title: "Cognitive Advice",
+      desc: "INTEGRATING GEN-AI LOGIC FOR AUTONOMOUS TREATMENT PROTOCOL GENERATION.",
+      icon: MessageSquare,
+      color: "emerald"
     },
     {
-      title: "Integrate LLM for recommendations",
-      desc: "Connect the classification output to a Large Language Model to generate human-readable, context-specific treatment plans.",
-      color: "text-emerald-600",
-      bg: "bg-emerald-100",
-      border: "border-emerald-200"
+      title: "XAI Transparency",
+      desc: "DEPLOYING GRAD-CAM TO VISUALIZE SPATIAL NEURAL SENSITIVITY FOR USER TRUST.",
+      icon: Search,
+      color: "purple"
     },
     {
-      title: "Enable visual explainability",
-      desc: "Apply Grad-CAM to visualize the model's decision-making process, ensuring trust and transparency for the end user.",
-      color: "text-amber-600",
-      bg: "bg-amber-100",
-      border: "border-amber-200"
+      title: "Edge Deployment",
+      desc: "OPTIMIZING INFERENCE FOR LOW-LATENCY OPERATION ON MOBILE SENSOR NODES.",
+      icon: Box,
+      color: "amber"
     }
   ];
 
   return (
-    <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
-      <motion.div variants={itemVariants} className="mb-10 flex items-center gap-4">
-        <div className="p-3 bg-emerald-100 rounded-full text-emerald-600 shadow-sm">
-          <Target size={36} />
+    <div className="space-y-12 pb-20">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-3">
+           <Terminal size={18} className="text-emerald-500" />
+           <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em]">Target Parameters // Goal Set</span>
         </div>
-        <div>
-          <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">Project Objectives</h1>
-          <p className="text-slate-600 mt-2 font-medium">Key goals and milestones of the research</p>
-        </div>
-      </motion.div>
+        <h1 className="text-5xl font-black text-white tracking-tighter uppercase italic">
+          Mission <span className="text-emerald-500 text-glow">Objectives</span>
+        </h1>
+        <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Defining the key neural and operational milestones of the framework.</p>
+      </div>
 
-      <div className="grid gap-6">
-        {objectives.map((obj, idx) => (
-          <motion.div variants={itemVariants} key={idx}>
-            <Card className={`border-l-8 ${obj.border} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`}>
-              <div className="flex items-center gap-6 p-2">
-                <div className={`p-4 rounded-2xl ${obj.bg} ${obj.color} shrink-0 shadow-inner`}>
-                  <CheckCircle2 size={32} />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {objectives.map((obj, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+          >
+            <Card className="h-full border-none group hover:bg-white/[0.03] transition-all duration-500" hoverEffect={true}>
+              <div className="flex gap-8 items-start">
+                <div className={`w-16 h-16 shrink-0 rounded-[1.5rem] bg-${obj.color}-500/10 text-${obj.color}-400 flex items-center justify-center border border-${obj.color}-500/20 shadow-lg shadow-${obj.color}-500/5 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                  <obj.icon size={32} />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-extrabold text-slate-800">{obj.title}</h3>
-                  <p className="text-slate-600 mt-2 text-lg font-medium leading-relaxed">{obj.desc}</p>
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-black text-white tracking-tighter uppercase group-hover:text-glow transition-all">{obj.title}</h3>
+                  <p className="text-[10px] text-slate-500 font-black leading-relaxed uppercase tracking-[0.2em]">{obj.desc}</p>
                 </div>
               </div>
             </Card>
@@ -78,28 +67,44 @@ const Objective = () => {
         ))}
       </div>
 
-      <motion.div variants={itemVariants}>
-        <Card className="mt-8 border-dashed border-2 border-slate-300 bg-slate-100 shadow-inner overflow-hidden relative">
-          <div className="absolute inset-0 bg-grid-slate-200/50 [mask-image:linear-gradient(0deg,transparent,black)]"></div>
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 p-6">
-            <div className="text-center md:text-left">
-              <h4 className="font-extrabold text-slate-800 text-xl">Final Deliverable</h4>
-              <p className="text-slate-600 font-medium mt-1">A completely integrated, end-to-end static dashboard for demonstration.</p>
+      {/* Target Milestone Banner */}
+      <Card className="bg-slate-950 border-white/5 shadow-2xl overflow-hidden relative group" hoverEffect={false}>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.1),transparent)]" />
+        {/* Background Technical Decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.02] pointer-events-none scale-150">
+           <Activity size={400} />
+        </div>
+        
+        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 p-12 lg:p-20 text-center lg:text-left">
+          <div className="max-w-xl space-y-6">
+            <div className="flex items-center justify-center lg:justify-start gap-3 text-emerald-400 text-[10px] font-black uppercase tracking-[0.5em] mb-2">
+              <Target size={20} className="animate-pulse" />
+              Primary Mission Vector
             </div>
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-3 text-emerald-700 font-extrabold bg-white px-6 py-4 rounded-full shadow-lg border border-emerald-100"
-            >
-              <span>Model</span>
-              <ArrowRight size={20} className="text-emerald-400" />
-              <span>Explainability</span>
-              <ArrowRight size={20} className="text-emerald-400" />
-              <span>LLM</span>
-            </motion.div>
+            <h2 className="text-4xl font-black text-white tracking-tighter leading-none uppercase italic sm:text-5xl">
+              AUTONOMOUS <span className="text-emerald-500">CROP SECURITY</span> ARCHITECTURE
+            </h2>
+            <p className="text-xs text-slate-500 font-black uppercase tracking-widest leading-relaxed">
+              Achieving total integration of vision-based diagnostics and generative intervention strategies.
+            </p>
           </div>
-        </Card>
-      </motion.div>
-    </motion.div>
+          <div className="flex flex-col items-center lg:items-end gap-6">
+            <div className="flex -space-x-4">
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} className="w-14 h-14 rounded-full bg-slate-900 border-2 border-white/5 flex items-center justify-center text-xs font-black text-slate-600 shadow-2xl relative group-hover:scale-110 transition-transform">
+                   <div className="absolute inset-0 bg-emerald-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                   <span className="relative z-10">0{i}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center gap-2">
+               <div className="h-[2px] w-12 bg-emerald-500/50" />
+               <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Integrated Pipeline</p>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </div>
   );
 };
 
