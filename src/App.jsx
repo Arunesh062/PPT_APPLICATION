@@ -11,8 +11,8 @@ import Objective from './pages/Objective';
 import Architecture from './pages/Architecture';
 import Dataset from './pages/Dataset';
 import Results from './pages/Results';
-import Application from './pages/Application';
 import Conclusion from './pages/Conclusion';
+import ProjectPhases from './pages/ProjectPhases';
 
 const navItems = {
   dashboard: { label: 'Dashboard', component: <Dashboard /> },
@@ -22,8 +22,8 @@ const navItems = {
   architecture: { label: 'Architecture', component: <Architecture /> },
   dataset: { label: 'Dataset', component: <Dataset /> },
   results: { label: 'Results', component: <Results /> },
-  application: { label: 'Application', component: <Application /> },
   conclusion: { label: 'Conclusion', component: <Conclusion /> },
+  projectphases: { label: "Project Phase's", component: <ProjectPhases /> },
 };
 
 function App() {

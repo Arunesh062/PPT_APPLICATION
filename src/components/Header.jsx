@@ -71,7 +71,7 @@ const Header = ({ activeTabLabel }) => {
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </div>
             <div className="hidden sm:block">
-              <p className="text-[11px] font-black text-white tracking-tight leading-none uppercase">A. Arunesh</p>
+              <p className="text-[11px] font-black text-white tracking-tight leading-none uppercase">M.Sowmiya</p>
               <p className="text-[9px] font-black text-emerald-500/70 tracking-widest mt-1.5 uppercase">Security Clearance 5</p>
             </div>
           </div>

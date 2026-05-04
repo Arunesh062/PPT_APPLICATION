@@ -9,6 +9,7 @@ import {
   BarChart3,
   Smartphone,
   Award,
+  FolderOpen,
   ChevronLeft,
   ChevronRight,
   Sparkles,
@@ -26,8 +27,8 @@ const navItems = [
   { id: 'architecture', label: 'Architecture', icon: Layers },
   { id: 'dataset', label: 'Dataset', icon: Database },
   { id: 'results', label: 'Results', icon: BarChart3 },
-  { id: 'application', label: 'Application', icon: Smartphone },
   { id: 'conclusion', label: 'Conclusion', icon: Award },
+  { id: 'projectphases', label: "Project Phase's", icon: FolderOpen },
 ];
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
