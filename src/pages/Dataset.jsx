@@ -13,11 +13,13 @@ const Dataset = () => {
 
   const categories = [
     { name: 'ANTHRACNOSE', count: 1500, type: 'FUNGAL' },
-    { name: 'BACTERIAL SPOT', count: 1450, type: 'BACTERIAL' },
-    { name: 'LEAF CURL', count: 1600, type: 'VIRAL' },
-    { name: 'MOSAIC VIRUS', count: 1550, type: 'VIRAL' },
-    { name: 'RINGSPOT', count: 1400, type: 'VIRAL' },
+    { name: 'BACTERIAL SPOT', count: 1500, type: 'BACTERIAL' },
+    { name: 'LEAF CURL', count: 1500, type: 'VIRAL' },
+    { name: 'MOSAIC VIRUS', count: 1500, type: 'VIRAL' },
+    { name: 'RINGSPOT', count: 1500, type: 'VIRAL' },
     { name: 'HEALTHY', count: 1500, type: 'STABLE' },
+    { name: 'MEALYBUGS', count: 1500, type: 'STABLE' },
+    { name: 'MITE DISEASES', count: 1500, type: 'STABLE' },
   ];
 
   return (

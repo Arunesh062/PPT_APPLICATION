@@ -5,20 +5,20 @@ import { motion } from 'framer-motion';
 
 const ProjectPhases = () => {
   const pdfs = [
-    { 
-      title: "Phase 1", 
-      file: "/pdfs/phase-1.pdf", 
+    {
+      title: "Phase 1",
+      file: "/pdfs/phase-1.pdf",
       desc: "Initial feasibility study and data collection protocols.",
       tag: "ANALYSIS"
     },
-    { 
-      title: "Phase 2", 
-      file: "/pdfs/phase-2.pdf", 
+    {
+      title: "Phase 2",
+      file: "/pdfs/phase-2.pdf",
       desc: "Model training results and comparative benchmarking.",
       tag: "TRAINING"
     },
-    { 
-      title: "Phase 3", 
+    {
+      title: "Phase 3",
       file: "/pdfs/phase-3.pdf", 
       desc: "Final integration, LLM reasoning, and system validation.",
       tag: "INTEGRATION"
@@ -30,8 +30,8 @@ const ProjectPhases = () => {
       {/* ── Page Header ── */}
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-3">
-           <Layers size={18} className="text-emerald-500" />
-           <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em]">Project Documentation // Archive</span>
+          <Layers size={18} className="text-emerald-500" />
+          <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em]">Project Documentation // Archive</span>
         </div>
         <h1 className="text-5xl font-black text-white tracking-tighter uppercase italic">
           Project <span className="text-emerald-500 text-glow">Phase's</span>
@@ -48,13 +48,13 @@ const ProjectPhases = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
           >
-            <Card 
+            <Card
               className="group overflow-hidden border-none bg-slate-950/40 backdrop-blur-xl relative"
               hoverEffect={true}
             >
               {/* Decorative Glow */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-[60px] pointer-events-none" />
-              
+
               <div className="space-y-6 relative z-10">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
@@ -97,7 +97,7 @@ const ProjectPhases = () => {
                     <ExternalLink size={14} />
                     View Node
                   </motion.a>
-                  
+
                   <motion.a
                     href={pdf.file}
                     download
@@ -110,7 +110,7 @@ const ProjectPhases = () => {
                   </motion.a>
                 </div>
               </div>
-              
+
               {/* Bottom Technical Line */}
               <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
             </Card>
@@ -122,7 +122,7 @@ const ProjectPhases = () => {
       <Card className="bg-slate-950/60 border-white/5 relative overflow-hidden">
         <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
           <div className="p-4 rounded-3xl bg-amber-500/10 border border-amber-500/20 text-amber-500">
-             <Terminal size={32} />
+            <Terminal size={32} />
           </div>
           <div className="flex-1 space-y-2">
             <h4 className="text-sm font-black text-white uppercase tracking-widest">Document Security Protocol</h4>
@@ -131,7 +131,7 @@ const ProjectPhases = () => {
             </p>
           </div>
           <div className="px-6 py-2 rounded-xl bg-white/5 border border-white/10 text-[9px] font-black text-slate-400 uppercase tracking-widest">
-             Status: Secure
+            Status: Secure
           </div>
         </div>
       </Card>
