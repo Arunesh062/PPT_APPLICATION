@@ -6,9 +6,11 @@ import { motion } from 'framer-motion';
 
 const Results = () => {
   const modelComparison = [
-    { name: 'EFF-NET', acc: 92.4, color: 'rgba(71, 85, 105, 0.5)' },
-    { name: 'DENSE-121', acc: 94.1, color: 'rgba(71, 85, 105, 0.5)' },
-    { name: 'RES-NET50', acc: 91.5, color: 'rgba(71, 85, 105, 0.5)' },
+    { name: 'EFF-NET', acc: 94.4, color: 'rgba(71, 85, 105, 0.5)' },
+    { name: 'DENSE-121', acc: 95.1, color: 'rgba(71, 85, 105, 0.5)' },
+    { name: 'RES-NET50', acc: 94.2, color: 'rgba(71, 85, 105, 0.5)' },
+    { name: 'MobileNet-v3', acc: 94.0, color: 'rgba(71, 85, 105, 0.5)' },
+    { name: 'VGG', acc: 94.3, color: 'rgba(71, 85, 105, 0.5)' },
     { name: 'CONVNEXT', acc: 96.0, color: '#10b981' },
   ];
 
@@ -23,8 +25,8 @@ const Results = () => {
     <div className="space-y-12 pb-20">
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-3">
-           <Database size={18} className="text-emerald-500" />
-           <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em]">Analytics Hub // Metrics V4.0</span>
+          <Database size={18} className="text-emerald-500" />
+          <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em]">Analytics Hub // Metrics V4.0</span>
         </div>
         <h1 className="text-5xl font-black text-white tracking-tighter uppercase italic">
           Performance <span className="text-emerald-500 text-glow">Matrix</span>
@@ -65,8 +67,8 @@ const Results = () => {
 
       {/* ── Benchmarking Section ── */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        <Card 
-          title="Comparative Accuracy" 
+        <Card
+          title="Comparative Accuracy"
           subtitle="Model Delta Analysis vs SOTA"
           icon={TrendingUp}
         >
@@ -75,17 +77,17 @@ const Results = () => {
               <BarChart data={modelComparison} layout="vertical" margin={{ left: 40, right: 40 }}>
                 <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="rgba(255,255,255,0.03)" />
                 <XAxis type="number" domain={[80, 100]} hide />
-                <YAxis 
-                  dataKey="name" 
-                  type="category" 
-                  axisLine={false} 
-                  tickLine={false} 
-                  tick={{fill: '#475569', fontSize: 10, fontWeight: 900, textTransform: 'uppercase'}}
+                <YAxis
+                  dataKey="name"
+                  type="category"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: '#475569', fontSize: 10, fontWeight: 900, textTransform: 'uppercase' }}
                 />
-                <RechartsTooltip 
-                  cursor={{fill: 'rgba(255,255,255,0.02)'}}
-                  contentStyle={{backgroundColor: '#0f172a', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.5)'}}
-                  itemStyle={{fontWeight: 900, color: '#10b981', fontSize: '10px'}}
+                <RechartsTooltip
+                  cursor={{ fill: 'rgba(255,255,255,0.02)' }}
+                  contentStyle={{ backgroundColor: '#0f172a', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.5)' }}
+                  itemStyle={{ fontWeight: 900, color: '#10b981', fontSize: '10px' }}
                 />
                 <Bar dataKey="acc" radius={[0, 10, 10, 0]} barSize={40}>
                   {modelComparison.map((entry, index) => (
@@ -96,17 +98,17 @@ const Results = () => {
             </ResponsiveContainer>
           </div>
           <div className="mt-6 p-5 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-between">
-             <div className="flex items-center gap-3">
-                <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,1)]" />
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ConvNeXt Dominance</span>
-             </div>
-             <span className="text-xs font-black text-white tracking-tighter uppercase">+1.9% vs DenseNet</span>
+            <div className="flex items-center gap-3">
+              <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,1)]" />
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ConvNeXt Dominance</span>
+            </div>
+            <span className="text-xs font-black text-white tracking-tighter uppercase">+1.9% vs DenseNet</span>
           </div>
         </Card>
 
         {/* Inference Card */}
-        <Card 
-          title="Inference Optimization" 
+        <Card
+          title="Inference Optimization"
           subtitle="Real-Time Processing Performance"
           icon={Zap}
           className="relative overflow-hidden"
@@ -156,25 +158,25 @@ const Results = () => {
           {[88, 92, 98, 95, 99, 94, 96, 97].map((val, i) => (
             <div key={i} className="flex-1 flex flex-col justify-end gap-3 group cursor-pointer">
               <div className="relative flex flex-col justify-end h-full">
-                 <div 
+                <div
                   className={`w-full rounded-xl bg-emerald-500/10 group-hover:bg-emerald-500/30 transition-all duration-500 relative`}
                   style={{ height: `${val}%` }}
                 >
-                  <motion.div 
+                  <motion.div
                     initial={{ height: 0 }}
                     whileInView={{ height: '100%' }}
                     transition={{ duration: 1.5, delay: i * 0.1 }}
-                    className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-emerald-500/40 to-emerald-500/10 rounded-xl" 
+                    className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-emerald-500/40 to-emerald-500/10 rounded-xl"
                   />
                   <div className="absolute inset-x-0 top-0 h-[2px] bg-emerald-500 rounded-t-lg shadow-[0_0_15px_rgba(16,185,129,1)]" />
-                  
+
                   {/* Tooltip on hover */}
                   <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 rounded bg-slate-900 border border-white/10 text-[9px] font-black text-white opacity-0 group-hover:opacity-100 transition-opacity">
                     {val}%
                   </div>
                 </div>
               </div>
-              <span className="text-[9px] font-black text-slate-500 text-center uppercase tracking-tighter">NODE-0{i+1}</span>
+              <span className="text-[9px] font-black text-slate-500 text-center uppercase tracking-tighter">NODE-0{i + 1}</span>
             </div>
           ))}
         </div>
